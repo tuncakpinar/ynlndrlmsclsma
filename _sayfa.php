@@ -34,6 +34,8 @@
 		case '_hakkimda':$url='_sayfalar/_hakkimda.php';break;
 		case '_portföy':$url='_sayfalar/_portföy.php';break;
 		case '_kategoriler':$url='_sayfalar/_admin/_kategoriler.php';break;
+		case '_yorumekle':$url='_sayfalar/_yorum-ekle.php';break;
+		case '_yorumlar':$url='_sayfalar/_yorumlar.php';break;
 		case 'deneme':$url='_sayfalar/deneme.php';break;
 
 		default:$url='_sayfalar/_icerik.php';break;

@@ -136,7 +136,7 @@
 			$_POST['link']=ifo::seflink($_POST['baslik']);
 			if($ifo->form_ekle('yorumlar'))
 			{ 
-				echo '~info~<h4><i class="fa fa-fw fa-thumbs-o-up"></i> İçerik Eklendi!</h4>~_sizdengelen';
+				echo '~info~<h4><i class="fa fa-fw fa-thumbs-o-up"></i> İçerik Eklendi!</h4>~_yorumlar';
 			}
 			else
 			{
@@ -219,7 +219,7 @@
 	case 'referansGuncelle':
 		if(ifo::yetki('1','i')){
 					if(isset($_FILES['slider'])){
-						$r=$haci->dosyayukle($_FILES['slider'],'../_rsm/_referans/','1980x800');
+						$r=$ifo->dosyayukle($_FILES['slider'],'../_rsm/_referans/','1980x800');
 						if($r=='ER'){echo '~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Yüklenirken Bir Hata Oluştu.</h4>Lütfen daha sonra tekrar deneyin.'; exit;}
 						else if($r=='LEN'){echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Boyutu İstenilenden Büyük.</h4>Lütfen Daha Küçük Boyutlu Bir Resim Yükleyin.'; exit;}
 						else if($r=='NA'){echo '~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Desteklenmeyen Dosya Türü</h4>Sadece Resim Yükleyebilirsin!'; exit;}
@@ -244,7 +244,7 @@
 	case 'sliderGuncelle':
 		if(ifo::yetki('1','i')){
 					if(isset($_FILES['slider'])){
-						$r=$haci->dosyayukle($_FILES['slider'],'../_rsm/_slider/','1980x800');
+						$r=$ifo->dosyayukle($_FILES['slider'],'../_rsm/_slider/','1980x800');
 						if($r=='ER'){echo '~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Yüklenirken Bir Hata Oluştu.</h4>Lütfen daha sonra tekrar deneyin.'; exit;}
 						else if($r=='LEN'){echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Boyutu İstenilenden Büyük.</h4>Lütfen Daha Küçük Boyutlu Bir Resim Yükleyin.'; exit;}
 						else if($r=='NA'){echo '~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Desteklenmeyen Dosya Türü</h4>Sadece Resim Yükleyebilirsin!'; exit;}
@@ -269,10 +269,10 @@
 	
 	case 'referansEkle':
 		if(ifo::yetki('1','i')){
-				if(isset($_FILES['slider'])){
+				if(isset($_FILES['referanslar'])){
 					$_POST['tarih']=$ifo->suan;
 					$_POST['ekleyen']=$_SESSION['id'];
-					$r=$haci->dosyayukle($_FILES['slider'],'../_rsm/_referans/','1980x800');
+					$r=$ifo->dosyayukle($_FILES['referanslar'],'../_rsm/_referans/','1980x800');
 					if($r=='ER'){echo '~danger~Resim yüklenirken bir hata oluştu.'; exit;}
 					else if($r=='LEN'){echo '~warning~Resim Boyutu İstenilenden Büyük.'; exit;}
 					else if($r=='NA'){echo '~warning~Sadece Resim Yükleyebilirsin.'; exit;}
@@ -296,7 +296,7 @@
 					if(isset($_FILES['slider'])){
 						$_POST['tarih']=$ifo->suan;
 						$_POST['ekleyen']=$_SESSION['id'];
-						$r=$haci->dosyayukle($_FILES['slider'],'../_rsm/_slider/','1980x800');
+						$r=$ifo->dosyayukle($_FILES['slider'],'../_rsm/_slider/','1980x800');
 						if($r=='ER'){echo '~danger~Resim yüklenirken bir hata oluştu.'; exit;}
 						else if($r=='LEN'){echo '~warning~Resim Boyutu İstenilenden Büyük.'; exit;}
 						else if($r=='NA'){echo '~warning~Sadece Resim Yükleyebilirsin.'; exit;}

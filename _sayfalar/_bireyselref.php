@@ -9,6 +9,10 @@
                     <a href="_rsm/_referans/<?=$referance['resim']?>" data-lightbox="image-<?=$referance['id']?>" data-title="<?=strip_tags($referance['aciklama'])?>">
                     	<img src="_rsm/_referans/<?=$referance['resim']?>" class="img-rounded img-responsive"/>
                     </a>
+			<div style="margin-top:20px;"><button type="submit" class="btn btn-info"><a href="_yorumekle">Yorum Ekle</a></button></div>
+                </div>
+                
+                <div>
                 </div>
 		<?php
 			endforeach;	
