@@ -11,23 +11,25 @@
 		$email=ifo::kontrol($_POST['email'],"text");
 		$sifre=ifo::sifrele($_POST['sifre']);
 		$sifre=ifo::kontrol($sifre,"text");
-        $alert='';
+        $alert=[];
 		//gönderilen email ve sifreye sahip kullanıcı varmı kontrol ediliyor
 		$uye=$ifo->sec("*","uyeler","email=$email and sifre=$sifre")->oku();
 
 		if($ifo->say){
 		//üye varmı?
-			if($uye['aktif'])
-			{//kullanıcının üyeliği onaylanmış mı?
+			if($uye['aktif']) {//kullanıcının üyeliği onaylanmış mı?
 				$_SESSION['id']=$uye['id']; 
 				$_SESSION['email']=$uye['email']; 
 				$_SESSION['adi']=$uye['adi']; 
 				$_SESSION['yetki']=$uye['yetki'];
-			}else {$alert[0]='warning';$alert[1]='<h4><i class="fa fa-fw fa-lock"></i>Üyeliğiniz henüz aktifleşmemiş!</h4> 
-		E-posta adresinize gönderdiğimiz bağlantıya tıkladığınızdan emin misiniz?.<br><a class="btn btn-warning btn-sm pull-right"> Bağlantıyı tekrar gönder! <i class="fa fa-paper-plane"> </i></a> ';}	
+			} else {
+				$alert[0]='warning';
+				$alert[1]='<h4><i class="fa fa-fw fa-lock"></i>Üyeliğiniz henüz aktifleşmemiş!</h4> E-posta adresinize gönderdiğimiz bağlantıya tıkladığınızdan emin misiniz?.<br><a class="btn btn-warning btn-sm pull-right"> Bağlantıyı tekrar gönder! <i class="fa fa-paper-plane"> </i></a> ';}	
 			
-		}else {$alert[0]='danger';$alert[1]='<h4><i class="fa fa-fw fa-lock"></i> Şifre veya e-posta hatalı!</h4> Lütfen tekrar deneyiniz... <br>
-			<a href="unuttum" class="btn btn-danger btn-sm pull-right"> Şifremi unuttum?</a> ';}
+		} else {
+			$alert[0]='danger';
+			$alert[1]='<h4><i class="fa fa-fw fa-lock"></i> Şifre veya e-posta hatalı!</h4> Lütfen tekrar deneyiniz... <br><a href="unuttum" class="btn btn-danger btn-sm pull-right"> Şifremi unuttum?</a> ';
+		}
 		include('../_inc/_giris.php');
 		if($alert) echo '~'.$alert[0].'~'.$alert[1];
 	  break;
@@ -85,8 +87,10 @@
 		}
 	  break;
 	  case 'uyeGuncelle':
-		if(ifo::yetki('1;2;3;4','i')){
-	  	//şifre kontrol
+	  
+		if(ifo::yetki('1','i')){
+		$_POST['link']=ifo::seflink($_POST['baslik']);		
+		
 		if($_POST['sifre1']){
 		if($_POST['sifre1']!=$_POST['sifre2']){
 			echo '~danger~<h4><i class="fa fa-fw fa-frown-o"></i>Şifreler Uyuşmuyor!</h4> Lütfen kontrol ediniz...';exit;
@@ -136,7 +140,7 @@
 			$_POST['link']=ifo::seflink($_POST['baslik']);
 			if($ifo->form_ekle('yorumlar'))
 			{ 
-				echo '~info~<h4><i class="fa fa-fw fa-thumbs-o-up"></i> İçerik Eklendi!</h4>~_yorumlar';
+				echo '~info~<h4><i class="fa fa-fw fa-thumbs-o-up"></i> İçerik Eklendi!</h4>~anasayfa';
 			}
 			else
 			{
@@ -269,10 +273,10 @@
 	
 	case 'referansEkle':
 		if(ifo::yetki('1','i')){
-				if(isset($_FILES['referanslar'])){
+				if(isset($_FILES['referans'])){
 					$_POST['tarih']=$ifo->suan;
 					$_POST['ekleyen']=$_SESSION['id'];
-					$r=$ifo->dosyayukle($_FILES['referanslar'],'../_rsm/_referans/','1980x800');
+					$r=$haci->dosyayukle($_FILES['referans'],'../_rsm/_referans/','1980x800');
 					if($r=='ER'){echo '~danger~Resim yüklenirken bir hata oluştu.'; exit;}
 					else if($r=='LEN'){echo '~warning~Resim Boyutu İstenilenden Büyük.'; exit;}
 					else if($r=='NA'){echo '~warning~Sadece Resim Yükleyebilirsin.'; exit;}
@@ -296,7 +300,7 @@
 					if(isset($_FILES['slider'])){
 						$_POST['tarih']=$ifo->suan;
 						$_POST['ekleyen']=$_SESSION['id'];
-						$r=$ifo->dosyayukle($_FILES['slider'],'../_rsm/_slider/','1980x800');
+						$r=$haci->dosyayukle($_FILES['slider'],'../_rsm/_slider/','1980x800');
 						if($r=='ER'){echo '~danger~Resim yüklenirken bir hata oluştu.'; exit;}
 						else if($r=='LEN'){echo '~warning~Resim Boyutu İstenilenden Büyük.'; exit;}
 						else if($r=='NA'){echo '~warning~Sadece Resim Yükleyebilirsin.'; exit;}
@@ -309,7 +313,7 @@
 							echo $ifo->form_ekle('slider')?'~success~<h4><i class="fa fa-fw fa-thumbs-up"></i> Başarıyla Yeni Slideri Ekledin.</h4>~_slider':'~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Bir Hata Oluştu.</h4>Lütfen daha sonra tekrar deneyin.';
 						}
 					}
-					else echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Seçmedin.</h4>Lütfen bir resim seç.';
+					else{ echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Seçmedin.</h4>Lütfen bir resim seç.';}
 				}
 	break;
 	

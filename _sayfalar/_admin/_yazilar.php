@@ -23,7 +23,7 @@
             	<td><a class="btn" href="_icerik?id=<?=$yazilar['id'];?>" data-toggle="popover" data-placement="bottom" data-title="Giriş" data-content="<?=substr(strip_tags($yazilar['giris']),0,250);?> ..." data-trigger="hover" ><i class="fa fa-fw fa-puzzle-piece"></i> <b><?=$yazilar['baslik'];?></b></a>
                 <p class="pull-right">
                 	
-                    <a class="text-info" title="Güncelle" href="_icerik?id=<?=$yazilar['id'];?>"><i class="fa fa-fw fa-pencil"></i></a>
+                    <a class="text-info" title="Güncelle" href="_icerikgncll?id=<?=$yazilar['id'];?>"><i class="fa fa-fw fa-pencil"></i></a>
                     <a class="btn-ajax-confirm text-danger" frm="icerikSil" data-id="<?=$yazilar['id'];?>" title="Sil" style="cursor:pointer;"><i class="fa fa-fw fa-times"></i></a>
                     <a class="btn-ajax-confirm text-<?=$yazilar['ana']?'info':'danger';?>" frm="icerikAna" data-id="<?=$yazilar['id'];?>" title="Anasayfada Yayınla" style="cursor:pointer;"><i class="fa fa-fw fa-home"></i></a>
                     <a class="btn-ajax-confirm text-<?=$yazilar['onay']?'info':'danger';?>" frm="icerikOnayla" data-id="<?=$yazilar['id'];?>" title="Onayla" style="cursor:pointer;"><i class="fa fa-fw fa-<?=$yazilar['onay']?'check':'circle-o';?>"></i></a>

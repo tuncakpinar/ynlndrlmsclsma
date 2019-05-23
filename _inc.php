@@ -17,6 +17,7 @@
 	require_once('_inc/_class.php');
 	//sorgu nesnesini oluştur
 	$ifo=new ifo();
+	$haci = new Haci();
 	//veritabanından site ayarlarını al
 	$ayarlar=$ifo->sec('*','ayarlar','aktif=1')->oku();
 	$iletisim=$ifo->sec('*','iletisim','aktif=1')->oku();

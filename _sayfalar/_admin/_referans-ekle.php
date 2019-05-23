@@ -31,7 +31,7 @@
 					<div class="input-group">
 						<span class="input-group-btn">
 							<span class="btn btn-primary btn-file btn-md">
-								Seç&hellip; <input type="file" name="slider" required>
+								Seç&hellip; <input type="file" name="referans" required>
 							</span>
 						</span>
 						<input type="text" class="form-control input-md" required readonly>

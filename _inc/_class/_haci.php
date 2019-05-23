@@ -1,6 +1,6 @@
 ﻿<?php
 
-	class haci{
+	class Haci{
 			public function dosyayukle($file,$klasor='../_rsm/_pf/',$maxboy='250x250',$maxboyut=1048576,$uzantilar=array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF)){
 			$file_name=$file['name'];
 			$file_tmp=$file['tmp_name'];

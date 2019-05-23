@@ -17,8 +17,9 @@
         	<div class="col-md-10">
             	<h4><?=$uye['adi'];?> 
                 <p class="pull-right">
-                <a class="text-info" title="Güncelle" href="_uye?id=<?=$uye['id'];?>"><i class="fa fa-fw fa-pencil"></i></a>
+                <a class="text-info" title="Güncelle" href="_uyeduzenle?id=<?=$uye['id'];?>"><i class="fa fa-fw fa-pencil"></i></a>
                     <a class="btn-ajax-confirm text-danger" frm="uyeSil" data-id="<?=$uye['id'];?>" title="Sil" style="cursor:pointer;"><i class="fa fa-fw fa-times"></i></a>
+                    
                     <a class="btn-ajax-confirm text-<?=$uye['onay']?'info':'danger';?>" frm="uyeOnayla" data-id="<?=$uye['id'];?>" title="Onayla" style="cursor:pointer;"><i class="fa fa-fw fa-<?=$uye['onay']?'check':'circle-o';?>"></i></a>
                 </p>
                 </h4>

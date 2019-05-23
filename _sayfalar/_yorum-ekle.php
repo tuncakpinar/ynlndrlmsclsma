@@ -1,6 +1,5 @@
 <?php 
 	defined( '_ERISIM' ) or die( 'Erisim engellendi!' );
-	ifo::yetki('5;4;3;2;1');
 	$ic=$ifo->sec('s.onay,y.baslik,y.aciklama,y.metin','yorumlar AS y')->oku();
 ?>
 	<section id="icerik" class="buyuk">

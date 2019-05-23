@@ -36,11 +36,15 @@
 		case '_kategoriler':$url='_sayfalar/_admin/_kategoriler.php';break;
 		case '_yorumekle':$url='_sayfalar/_yorum-ekle.php';break;
 		case '_yorumlar':$url='_sayfalar/_yorumlar.php';break;
+		case '_uyeduzenle':$url='_sayfalar/_admin/_uyedznl.php';break;
+		case '_icerikgncll':$url='_sayfalar/_admin/_icerikgncll.php';break;
+
 		case 'deneme':$url='_sayfalar/deneme.php';break;
+		case '_yorumlar':$url='_sayfalar/_portföy.php';break;
 
 		default:$url='_sayfalar/_icerik.php';break;
 	}
 
-	@include($url);
+	require($url);
 
 ?>
