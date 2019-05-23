@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 09 May 2017, 21:25:49
--- Sunucu sürümü: 10.1.21-MariaDB
--- PHP Sürümü: 7.1.1
+-- Üretim Zamanı: 24 May 2019, 00:00:47
+-- Sunucu sürümü: 10.1.28-MariaDB
+-- PHP Sürümü: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Veritabanı: `webuz`
+-- Veritabanı: `arifkarakaya`
 --
 
 -- --------------------------------------------------------
@@ -49,7 +51,7 @@ CREATE TABLE `ayarlar` (
 --
 
 INSERT INTO `ayarlar` (`id`, `adi`, `adres`, `slogan`, `aciklama`, `kelimeler`, `hakkimizda`, `umenu`, `sutun`, `say`, `uyelik`, `slider`, `aside`, `copyright`, `aktif`) VALUES
-(1, 'ARİF KARAKAYA', 'anasayfa', 'Sadece Hayal Et!', 'Emlak Uzmanı', 'arif karakaya,arif,karakaya,emlak,emlak danışmanı,danışman', 'emlak danışmanı', 1, 2, 2, 1, 1, 0, 'Tüm hakları saklıdır ARİF KARAKAYA © 2017', 1);
+(1, 'ARİF KARAKAYA', 'anasayfa', 'Sadece Hayal Et!', 'Emlak Uzmanı', 'arif karakaya,arif,karakaya,emlak,emlak danışmanı,danışman', 'emlak danışmanı', 1, 2, 2, 1, 1, 0, 'Tüm hakları saklıdır ARİF KARAKAYA © 2019', 1);
 
 -- --------------------------------------------------------
 
@@ -157,6 +159,29 @@ INSERT INTO `menu` (`id`, `ust`, `adi`, `link`, `iid`, `onay`, `sabit`, `yetki`)
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `portfoylerim`
+--
+
+CREATE TABLE `portfoylerim` (
+  `id` int(11) NOT NULL,
+  `baslik` varchar(50) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
+  `aciklama` text COLLATE utf32_turkish_ci NOT NULL,
+  `resim` varchar(200) COLLATE utf32_turkish_ci NOT NULL,
+  `adres` varchar(100) COLLATE utf32_turkish_ci NOT NULL,
+  `onay` int(1) NOT NULL,
+  `tip` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_turkish_ci;
+
+--
+-- Tablo döküm verisi `portfoylerim`
+--
+
+INSERT INTO `portfoylerim` (`id`, `baslik`, `aciklama`, `resim`, `adres`, `onay`, `tip`) VALUES
+(1, 'şişlide ferah daire', 'şişli merkeze metroya yakın ferah daire', 'modal.jpg', 'şişli merkez mahallesi palazoğlu sokak', 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `referanslar`
 --
 
@@ -174,9 +199,12 @@ CREATE TABLE `referanslar` (
 --
 
 INSERT INTO `referanslar` (`id`, `tip`, `baslik`, `resim`, `aciklama`, `onay`) VALUES
-(1, 2, 'REFERANS 111', '590f2b92afc808.73834463.jpg', '<p>Peugeot ve Citroen ara&ccedil;ların &uuml;reticisi olan Fransız PSA, ABD&rsquo;li General Motors (GM) ile Opel&rsquo;in satışı konusunda anlaştı. GM ve PSA&#39;nın 3 Mart Cuma g&uuml;n&uuml; el sıkıştığı bilgisi yayınlanmıştı.&nbsp;</p>\r\n\r\n<p>PSA ve GM konuyla ilgili a&ccedil;ıklama yapmazken Opel&#39;le birlikte GM b&uuml;nyesinde yer alan Vauxhall&#39;ın da PSA b&uuml;nyesine ge&ccedil;mesi bekleniyor.&nbsp;</p>\r\n\r\n<p>Opel yetkilileri d&uuml;n şirket &ccedil;alışanlarını toplayarak şirketin satış s&uuml;recinde olduğunu belirtti fakat detay vermedi. General Motors son 16 yıldır &uuml;st &uuml;ste Avrupa&rsquo;da zarar a&ccedil;ıklıyor. Opel&rsquo;in &ouml;demek zorunda olduğu bor&ccedil; ve tazminat tutarlarının 10 milyar dolara yakın olduğu belirtiliyor.</p>\r\n\r\n<p>PSA&rsquo;nın patronu Carlos Tavares anlaşmayla ilgili yaptığı konuşmada &ldquo;Avrupa&rsquo;nın otomobil şampiyonunu yaratabiliriz&rdquo; ifadesini kullandı.&nbsp;</p>\r\n\r\n<p><span style=\"font-family:pt_sansbold\">ENDİŞELER S&Uuml;R&Uuml;YOR</span></p>\r\n\r\n<p>&Ouml;te yandan satış sonrası işten &ccedil;ıkarma olup olmayacağı Opel&#39;in faaliyette bulunduğu &uuml;lkelerde endişe yaratıyor. GM&#39;nin sattığı ifade edilen varlıklar arasında olan İngiltere&#39;deki Vauxhall tesislerinde 4500 kişi &ccedil;alışıyor.</p>\r\n\r\n<p>İngiltere, satış g&ouml;r&uuml;şmelerinin a&ccedil;ıklanmasının ardından General Motors yetkilileri ile temas kurarak kaygılarını iletmişti. İngiltere Ticaret Bakanlığı, h&uuml;k&uuml;metin GM ile yakın temasta bulunduğunu ve iki şirketin satış g&ouml;r&uuml;şmeleri yaptıklarını a&ccedil;ıklamalarının ardından konunun yakından takip edildiğini a&ccedil;ıklamıştı.</p>', 1),
+(1, 2, 'REFERANS 1', '590f2b92afc808.73834463.jpg', '<p>Peugeot ve Citroen araçların üreticisi olan Fransız PSA, ABD’li General Motors (GM) ile Opel’in satışı konusunda anlaştı. GM ve PSA\'nın 3 Mart Cuma günü el sıkıştığı bilgisi yayınlanmıştı. </p>\n\n<p>PSA ve GM konuyla ilgili açıklama yapmazken Opel\'le birlikte GM bünyesinde yer alan Vauxhall\'ın da PSA bünyesine geçmesi bekleniyor. </p>\n\n<p>Opel yetkilileri dün şirket çalışanlarını toplayarak şirketin satış sürecinde olduğunu belirtti fakat detay vermedi. General Motors son 16 yıldır üst üste Avrupa’da zarar açıklıyor. Opel’in ödemek zorunda olduğu borç ve tazminat tutarlarının 10 milyar dolara yakın olduğu belirtiliyor.</p>\n\n<p>PSA’nın patronu Carlos Tavares anlaşmayla ilgili yaptığı konuşmada “Avrupa’nın otomobil şampiyonunu yaratabiliriz” ifadesini kullandı. </p>\n\n<p><span style=\"font-family:pt_sansbold\">ENDİŞELER SÜRÜYOR</span></p>\n\n<p>Öte yandan satış sonrası işten çıkarma olup olmayacağı Opel\'in faaliyette bulunduğu ülkelerde endişe yaratıyor. GM\'nin sattığı ifade edilen varlıklar arasında olan İngiltere\'deki Vauxhall tesislerinde 4500 kişi çalışıyor.</p>\n\n<p>İngiltere, satış görüşmelerinin açıklanmasının ardından General Motors yetkilileri ile temas kurarak kaygılarını iletmişti. İngiltere Ticaret Bakanlığı, hükümetin GM ile yakın temasta bulunduğunu ve iki şirketin satış görüşmeleri yaptıklarını açıklamalarının ardından konunun yakından takip edildiğini açıklamıştı.</p>', 1),
+(17, 1, 'deneme referaans', '5ce703561bf327.52192634.jpg', '<p>asdsadasdffasdfeffdf</p>', 0),
+(18, 2, 'deneme düzenle kurumsal', '5ce703dcb9fe50.19097213.jpg', '<p>sdçkndasuıhdfouashfpısdzajfgpoadkfıdhspfıjfdgs</p>', 1),
 (8, 1, 'REFERANS 2', 's2.jpg', '<h5>ağaoğlu</h5>', 1),
-(14, 1, 'werewrew', '590f3035444767.30314529.jpg', '<p>dfgdfgfd</p>', 0);
+(14, 1, 'REFERANS 3', '590f3035444767.30314529.jpg', '<p>dfgdfgfd</p>', 0),
+(19, 1, 'denemessoooon', '5ce7041a6998d7.31984042.jpg', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -198,8 +226,9 @@ CREATE TABLE `slider` (
 --
 
 INSERT INTO `slider` (`id`, `baslik`, `resim`, `aciklama`, `aktif`, `onay`) VALUES
-(1, 'REFERANS 111', 's1.jpg', '<p>Peugeot ve Citroen araçların üreticisi olan Fransız PSA, ABD’li General Motors (GM) ile Opel’in satışı konusunda anlaştı. GM ve PSA\'nın 3 Mart Cuma günü el sıkıştığı bilgisi yayınlanmıştı. </p>\n\n<p>PSA ve GM konuyla ilgili açıklama yapmazken Opel\'le birlikte GM bünyesinde yer alan Vauxhall\'ın da PSA bünyesine geçmesi bekleniyor. </p>\n\n<p>Opel yetkilileri dün şirket çalışanlarını toplayarak şirketin satış sürecinde olduğunu belirtti fakat detay vermedi. General Motors son 16 yıldır üst üste Avrupa’da zarar açıklıyor. Opel’in ödemek zorunda olduğu borç ve tazminat tutarlarının 10 milyar dolara yakın olduğu belirtiliyor.</p>\n\n<p>PSA’nın patronu Carlos Tavares anlaşmayla ilgili yaptığı konuşmada “Avrupa’nın otomobil şampiyonunu yaratabiliriz” ifadesini kullandı. </p>\n\n<p><span style=\"font-family:pt_sansbold\">ENDİŞELER SÜRÜYOR</span></p>\n\n<p>Öte yandan satış sonrası işten çıkarma olup olmayacağı Opel\'in faaliyette bulunduğu ülkelerde endişe yaratıyor. GM\'nin sattığı ifade edilen varlıklar arasında olan İngiltere\'deki Vauxhall tesislerinde 4500 kişi çalışıyor.</p>\n\n<p>İngiltere, satış görüşmelerinin açıklanmasının ardından General Motors yetkilileri ile temas kurarak kaygılarını iletmişti. İngiltere Ticaret Bakanlığı, hükümetin GM ile yakın temasta bulunduğunu ve iki şirketin satış görüşmeleri yaptıklarını açıklamalarının ardından konunun yakından takip edildiğini açıklamıştı.</p>', 0, 1),
-(8, 'Özyurtlar, Ödül İstanbul Beylikdüzü\'nü satışa çıkardı!', 's2.jpg', '<h5>ağaoğlu</h5>', 1, 1);
+(1, 'SLİDER 1', 's1.jpg', '<p>Peugeot ve Citroen araçların üreticisi olan Fransız PSA, ABD’li General Motors (GM) ile Opel’in satışı konusunda anlaştı. GM ve PSA\'nın 3 Mart Cuma günü el sıkıştığı bilgisi yayınlanmıştı. </p>\n\n<p>PSA ve GM konuyla ilgili açıklama yapmazken Opel\'le birlikte GM bünyesinde yer alan Vauxhall\'ın da PSA bünyesine geçmesi bekleniyor. </p>\n\n<p>Opel yetkilileri dün şirket çalışanlarını toplayarak şirketin satış sürecinde olduğunu belirtti fakat detay vermedi. General Motors son 16 yıldır üst üste Avrupa’da zarar açıklıyor. Opel’in ödemek zorunda olduğu borç ve tazminat tutarlarının 10 milyar dolara yakın olduğu belirtiliyor.</p>\n\n<p>PSA’nın patronu Carlos Tavares anlaşmayla ilgili yaptığı konuşmada “Avrupa’nın otomobil şampiyonunu yaratabiliriz” ifadesini kullandı. </p>\n\n<p><span style=\"font-family:pt_sansbold\">ENDİŞELER SÜRÜYOR</span></p>\n\n<p>Öte yandan satış sonrası işten çıkarma olup olmayacağı Opel\'in faaliyette bulunduğu ülkelerde endişe yaratıyor. GM\'nin sattığı ifade edilen varlıklar arasında olan İngiltere\'deki Vauxhall tesislerinde 4500 kişi çalışıyor.</p>\n\n<p>İngiltere, satış görüşmelerinin açıklanmasının ardından General Motors yetkilileri ile temas kurarak kaygılarını iletmişti. İngiltere Ticaret Bakanlığı, hükümetin GM ile yakın temasta bulunduğunu ve iki şirketin satış görüşmeleri yaptıklarını açıklamalarının ardından konunun yakından takip edildiğini açıklamıştı.</p>', 0, 1),
+(8, 'Özyurtlar, Ödül İstanbul Beylikdüzü\'nü satışa çıkardı!', 's2.jpg', '<h5>ağaoğlu</h5>', 1, 1),
+(13, 'deneme slider', '5ce70446030254.43772903.jpg', NULL, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -225,8 +254,10 @@ CREATE TABLE `uyeler` (
 --
 
 INSERT INTO `uyeler` (`id`, `adi`, `resim`, `email`, `sifre`, `yetki`, `tarih`, `onay`, `aktif`, `aktivasyon`) VALUES
-(1, 'Arif Karakaya', 'no-image.png', 'admin@admin', '2e99bf4e42962410038bc6fa4ce40d97', 1, '2015-05-20', 1, 1, ''),
-(2, 'tunç akpınar', 'no-image.png', 'tuncakpinar@hotmail.com', '2e99bf4e42962410038bc6fa4ce40d97', 3, '2017-03-06', 1, 0, 'S43jd');
+(1, 'Arif Karakayaa', 'no-image.png', 'admin@admin', '2e99bf4e42962410038bc6fa4ce40d97', 1, '2019-04-10', 1, 1, ''),
+(2, 'tunç akpınar', 'no-image.png', 'tuncakpinar@hotmail.com', '2e99bf4e42962410038bc6fa4ce40d97', 3, '2019-04-10', 1, 0, 'S43jd'),
+(3, 'deneme üye', 'no-image.png', 'tuncakpinar05@gmail.com', '2e99bf4e42962410038bc6fa4ce40d97', 3, '2019-05-22', 1, 0, 'GM8nq'),
+(4, 'memoli', 'no-image.png', 'memoli@hotmail.com', '2e99bf4e42962410038bc6fa4ce40d97', 3, '2019-05-23', 1, 1, '<br /');
 
 -- --------------------------------------------------------
 
@@ -254,9 +285,9 @@ CREATE TABLE `yazilar` (
 --
 
 INSERT INTO `yazilar` (`id`, `kid`, `uid`, `link`, `baslik`, `giris`, `metin`, `tarih`, `ayar`, `ana`, `onay`, `yetki`) VALUES
-(1, 2, 1, 'webuza-hosgeldiniz', 'yazılar', '<p>Ekle sekmesinde, galeriler belgenizin genel g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; d&uuml;zenlemek i&ccedil;in tasarlanan &ouml;ğeleri eklerler. Bu galerileri, tablolar, &uuml;stbilgiler, altbilgiler, kapak sayfaları ve diğer belge yapı taşlarını eklemek i&ccedil;in kullanabilirsiniz. Resimler, kartlar veya grafikler oluşturduğunuzda, aynı zamanda ge&ccedil;erli belge g&ouml;r&uuml;n&uuml;m&uuml;n&uuml;z&uuml; de d&uuml;zenlerler.</p>', '<p>Belgedeki se&ccedil;ili metnin bi&ccedil;imlendirmesini, Giriş sekmesindeki Hızlı Stiller galerisinden se&ccedil;ilen metin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; se&ccedil;erek kolayca değiştirebilirsiniz. Metni doğrudan Giriş sekmesindeki diğer denetimleri kullanarak da bi&ccedil;imlendirebilirsiniz. Denetimlerin &ccedil;oğu ge&ccedil;erli temadan g&ouml;r&uuml;n&uuml;m kullanma ya da doğrudan belirlediğiniz bi&ccedil;imi kullanma se&ccedil;eneği sunar. Belgenizin genel g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; değiştirmek i&ccedil;in, Sayfa D&uuml;zeni sekmesinde yeni Tema &ouml;ğeleri se&ccedil;in. Hızlı Stil galerinde bulunan g&ouml;r&uuml;n&uuml;mleri değiştirmek i&ccedil;in, Ge&ccedil;erli Stil Ayarını Değiştir komutunu kullanın. Ge&ccedil;erli şablonunuzda bulunan belgenizin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; her zaman &ouml;zg&uuml;n haline geri d&ouml;nd&uuml;rebilmeniz i&ccedil;in, Temalar galerisi ve Hızlı Stiller galerisi komutları sıfırlar.</p>', '2015-03-13 15:36:00', '', 1, 1, '5'),
-(2, 2, 3, 'sadece-hayal-et', 'deneme', 'Ekle sekmesinde, galeriler belgenizin genel görünümünü düzenlemek için tasarlanan öğeleri eklerler.  Bu galerileri, tablolar, üstbilgiler, altbilgiler, kapak sayfaları ve diğer belge yapı taşlarını eklemek için kullanabilirsiniz.  Resimler, kartlar veya grafikler oluşturduğunuzda, aynı zamanda geçerli belge görünümünüzü de düzenlerler. ', NULL, '2015-03-15 05:07:07', '', 1, 1, '5'),
-(3, 1, 2, 'urunlerimiz', 'emlak', '<p>dfhklsjfh ksjf jklsfh sjklfh kwejlhf kljhf wekljfhwekl jfhwekjlfh wklf</p>\r\n\r\n<p>fsdfsdfsdf</p>', '<p>sfsghfrev wuıfh fvıwu rıucwı chwrkl chwkjfy hwckjhfklcwhkj cwkjfh cwkhfr wkcjkwh ckjwh rckw fr wc</p>', '2015-03-14 07:24:00', '', 1, 1, '5');
+(1, 2, 1, 'sitemize hosgeldiniz', 'yazılar', '<p>Ekle sekmesinde, galeriler belgenizin genel g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; d&uuml;zenlemek i&ccedil;in tasarlanan &ouml;ğeleri eklerler. Bu galerileri, tablolar, &uuml;stbilgiler, altbilgiler, kapak sayfaları ve diğer belge yapı taşlarını eklemek i&ccedil;in kullanabilirsiniz. Resimler, kartlar veya grafikler oluşturduğunuzda, aynı zamanda ge&ccedil;erli belge g&ouml;r&uuml;n&uuml;m&uuml;n&uuml;z&uuml; de d&uuml;zenlerler.</p>', '<p>Belgedeki se&ccedil;ili metnin bi&ccedil;imlendirmesini, Giriş sekmesindeki Hızlı Stiller galerisinden se&ccedil;ilen metin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; se&ccedil;erek kolayca değiştirebilirsiniz. Metni doğrudan Giriş sekmesindeki diğer denetimleri kullanarak da bi&ccedil;imlendirebilirsiniz. Denetimlerin &ccedil;oğu ge&ccedil;erli temadan g&ouml;r&uuml;n&uuml;m kullanma ya da doğrudan belirlediğiniz bi&ccedil;imi kullanma se&ccedil;eneği sunar. Belgenizin genel g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; değiştirmek i&ccedil;in, Sayfa D&uuml;zeni sekmesinde yeni Tema &ouml;ğeleri se&ccedil;in. Hızlı Stil galerinde bulunan g&ouml;r&uuml;n&uuml;mleri değiştirmek i&ccedil;in, Ge&ccedil;erli Stil Ayarını Değiştir komutunu kullanın. Ge&ccedil;erli şablonunuzda bulunan belgenizin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; her zaman &ouml;zg&uuml;n haline geri d&ouml;nd&uuml;rebilmeniz i&ccedil;in, Temalar galerisi ve Hızlı Stiller galerisi komutları sıfırlar.</p>', '2019-04-12 15:36:00', '', 1, 1, '5'),
+(2, 2, 3, 'sadece-hayal-et', 'deneme', 'Ekle sekmesinde, galeriler belgenizin genel görünümünü düzenlemek için tasarlanan öğeleri eklerler.  Bu galerileri, tablolar, üstbilgiler, altbilgiler, kapak sayfaları ve diğer belge yapı taşlarını eklemek için kullanabilirsiniz.  Resimler, kartlar veya grafikler oluşturduğunuzda, aynı zamanda geçerli belge görünümünüzü de düzenlerler. ', NULL, '2019-04-12 05:07:07', '', 1, 1, '5'),
+(3, 1, 2, 'urunlerimiz', 'emlak', '<p>dfhklsjfh ksjf jklsfh sjklfh kwejlhf kljhf wekljfhwekl jfhwekjlfh wklf</p>\r\n\r\n<p>fsdfsdfsdf</p>', '<p>sfsghfrev wuıfh fvıwu rıucwı chwrkl chwkjfy hwckjhfklcwhkj cwkjfh cwkhfr wkcjkwh ckjwh rckw fr wc</p>', '2019-04-12 07:24:00', '', 1, 1, '5');
 
 -- --------------------------------------------------------
 
@@ -309,15 +340,10 @@ CREATE TABLE `yorumlar` (
 --
 
 INSERT INTO `yorumlar` (`id`, `kid`, `uid`, `link`, `baslik`, `metin`, `tarih`, `ayar`, `ana`, `onay`, `yetki`, `firma`, `adsoyad`, `unvan`) VALUES
-(1, 2, 1, 'deneme-yazi1', 'deneme yazııı', '<p>Belgedeki se&ccedil;ili metnin bi&ccedil;imlendirmesini, Giriş sekmesindeki Hızlı Stiller galerisinden se&ccedil;ilen metin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; se&ccedil;erek kolayca değiştirebilirsiniz. Metni doğrudan Giriş sekmesindeki diğer denetimleri kullanarak da bi&ccedil;imlendirebilirsiniz. Denetimlerin &ccedil;oğu ge&ccedil;erli temadan g&ouml;r&uuml;n&uuml;m kullanma ya da doğrudan belirlediğiniz bi&ccedil;imi kullanma se&ccedil;eneği sunar. Belgenizin genel g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; değiştirmek i&ccedil;in, Sayfa D&uuml;zeni sekmesinde yeni Tema &ouml;ğeleri se&ccedil;in. Hızlı Stil galerinde bulunan g&ouml;r&uuml;n&uuml;mleri değiştirmek i&ccedil;in, Ge&ccedil;erli Stil Ayarını Değiştir komutunu kullanın. Ge&ccedil;erli şablonunuzda bulunan belgenizin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; her zaman &ouml;zg&uuml;n haline geri d&ouml;nd&uuml;rebilmeniz i&ccedil;in, Temalar galerisi ve Hızlı Stiller galerisi komutları sıfırlar.</p>', '2015-03-13 15:36:00', '', 1, 1, '5', NULL, NULL, NULL),
-(2, 2, 1, 'denemeyaziiiii-yes-yes', 'denemeyaziiiii yes yes', '<p>deneme metin</p>\r\n\r\n<p>Belgedeki se&ccedil;ili metnin bi&ccedil;imlendirmesini, Giriş sekmesindeki Hızlı Stiller galerisinden se&ccedil;ilen metin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; se&ccedil;erek kolayca değiştirebilirsiniz. Metni doğrudan Giriş sekmesindeki diğer denetimleri kullanarak da bi&ccedil;imlendirebilirsiniz. Denetimlerin &ccedil;oğu ge&ccedil;erli temadan g&ouml;r&uuml;n&uuml;m kullanma ya da doğrudan belirlediğiniz bi&ccedil;imi kullanma se&ccedil;eneği sunar. Belgenizin genel g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; değiştirmek i&ccedil;in, Sayfa D&uuml;zeni sekmesinde yeni Tema &ouml;ğeleri se&ccedil;in. Hızlı Stil galerinde bulunan g&ouml;r&uuml;n&uuml;mleri değiştirmek i&ccedil;in, Ge&ccedil;erli Stil Ayarını Değiştir komutunu kullanın. Ge&ccedil;erli şablonunuzda bulunan belgenizin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; her zaman &ouml;zg&uuml;n haline geri d&ouml;nd&uuml;rebilmeniz i&ccedil;in, Temalar galerisi ve Hızlı Stiller galerisi komutları sıfırlar.</p>', '2015-03-15 05:07:07', '', 1, 0, '5', 'eeeeeeedddd', 'ddddd', 'fdfdsfsd'),
-(3, 2, 1, 'denemeyazi3', 'deeneme', '<p>sfsghfrev wuıfh fvıwu rıucwı chwrkl chwkjfy hwckjhfklcwhkj cwkjfh cwkhfr wkcjkwh ckjwh rckw fr wc</p>', '2015-03-14 07:24:00', '', 1, 1, '5', NULL, NULL, NULL),
-(4, 2, 1, 'asd', 'asd', '<p>tyu</p>', '2017-03-22 15:30:00', '', 0, 1, '5', NULL, NULL, NULL),
+(1, 2, 1, 'deneme-yorum', 'deneme yorum', '<p>Belgedeki se&ccedil;ili metnin bi&ccedil;imlendirmesini, Giriş sekmesindeki Hızlı Stiller galerisinden se&ccedil;ilen metin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; se&ccedil;erek kolayca değiştirebilirsiniz. Metni doğrudan Giriş sekmesindeki diğer denetimleri kullanarak da bi&ccedil;imlendirebilirsiniz. Denetimlerin &ccedil;oğu ge&ccedil;erli temadan g&ouml;r&uuml;n&uuml;m kullanma ya da doğrudan belirlediğiniz bi&ccedil;imi kullanma se&ccedil;eneği sunar. Belgenizin genel g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; değiştirmek i&ccedil;in, Sayfa D&uuml;zeni sekmesinde yeni Tema &ouml;ğeleri se&ccedil;in. Hızlı Stil galerinde bulunan g&ouml;r&uuml;n&uuml;mleri değiştirmek i&ccedil;in, Ge&ccedil;erli Stil Ayarını Değiştir komutunu kullanın. Ge&ccedil;erli şablonunuzda bulunan belgenizin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; her zaman &ouml;zg&uuml;n haline geri d&ouml;nd&uuml;rebilmeniz i&ccedil;in, Temalar galerisi ve Hızlı Stiller galerisi komutları sıfırlar.</p>', '2019-04-12 18:36:00', '', 1, 1, '5', NULL, NULL, NULL),
+(2, 2, 1, 'denemeyorum2', 'deneme yorum2', '<p>deneme metin</p>\r\n\r\n<p>Belgedeki se&ccedil;ili metnin bi&ccedil;imlendirmesini, Giriş sekmesindeki Hızlı Stiller galerisinden se&ccedil;ilen metin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; se&ccedil;erek kolayca değiştirebilirsiniz. Metni doğrudan Giriş sekmesindeki diğer denetimleri kullanarak da bi&ccedil;imlendirebilirsiniz. Denetimlerin &ccedil;oğu ge&ccedil;erli temadan g&ouml;r&uuml;n&uuml;m kullanma ya da doğrudan belirlediğiniz bi&ccedil;imi kullanma se&ccedil;eneği sunar. Belgenizin genel g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; değiştirmek i&ccedil;in, Sayfa D&uuml;zeni sekmesinde yeni Tema &ouml;ğeleri se&ccedil;in. Hızlı Stil galerinde bulunan g&ouml;r&uuml;n&uuml;mleri değiştirmek i&ccedil;in, Ge&ccedil;erli Stil Ayarını Değiştir komutunu kullanın. Ge&ccedil;erli şablonunuzda bulunan belgenizin g&ouml;r&uuml;n&uuml;m&uuml;n&uuml; her zaman &ouml;zg&uuml;n haline geri d&ouml;nd&uuml;rebilmeniz i&ccedil;in, Temalar galerisi ve Hızlı Stiller galerisi komutları sıfırlar.</p>', '2019-04-12 05:07:07', '', 1, 1, '5', 'deneme firma', 'tunç akpınar', 'öğrenci'),
 (5, 2, 0, 'baslik-deneme', 'Başlık deneme', '<p>Metin deneme</p>', '2017-03-08 12:24:15', '', 1, 1, '5', 'Deneme firma', 'Deneme isim', 'Deneme ünvan'),
-(6, 2, 0, 'uyiyuiy', 'uyıyuıy', '<p>657567</p>', '2017-03-04 12:28:02', '', 1, 0, '5', 'dnm 2', 'asdasd', 'qweqw'),
-(7, 2, 1, 'llll', 'llll', NULL, '2017-03-06 16:30:00', '', 0, 0, '5', 'sur yapı', 'wdqedqdas', 'buhbuhb'),
-(8, 2, 0, 'erthfghfghfg', 'erthfghfghfg', '<p>dsfsdfsdf</p>', '2017-05-07 12:44:40', '', 1, 0, '5', 'guncellendi', 'retre', 'retertrtyrtyrty'),
-(9, 2, 0, 'sdfsdf', 'sdfsdf', '<p>sdfgsdfgfd</p>', '2017-05-07 12:50:40', '', 1, 1, '5', 'asdasdas', 'dsfdsf', 'dsfsd');
+(10, 2, 0, 'deneme', 'deneme', 'yorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkleyorumEkle', '2019-05-17 21:03:30', '', 1, 1, '5', 'deneme', 'Hacı Tunç Akpınar', 'deneme');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -345,6 +371,12 @@ ALTER TABLE `kategoriler`
 -- Tablo için indeksler `menu`
 --
 ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `portfoylerim`
+--
+ALTER TABLE `portfoylerim`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -392,51 +424,68 @@ ALTER TABLE `yorumlar`
 --
 ALTER TABLE `ayarlar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Tablo için AUTO_INCREMENT değeri `iletisim`
 --
 ALTER TABLE `iletisim`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Tablo için AUTO_INCREMENT değeri `kategoriler`
 --
 ALTER TABLE `kategoriler`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Tablo için AUTO_INCREMENT değeri `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `portfoylerim`
+--
+ALTER TABLE `portfoylerim`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- Tablo için AUTO_INCREMENT değeri `referanslar`
 --
 ALTER TABLE `referanslar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- Tablo için AUTO_INCREMENT değeri `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- Tablo için AUTO_INCREMENT değeri `uyeler`
 --
 ALTER TABLE `uyeler`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- Tablo için AUTO_INCREMENT değeri `yazilar`
 --
 ALTER TABLE `yazilar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- Tablo için AUTO_INCREMENT değeri `yetkiler`
 --
 ALTER TABLE `yetkiler`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- Tablo için AUTO_INCREMENT değeri `yorumlar`
 --
 ALTER TABLE `yorumlar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
