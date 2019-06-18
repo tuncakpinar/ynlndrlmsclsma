@@ -7,7 +7,7 @@
     	<h4 class="well">
         	YENİ YAZI
             <p class="pull-right">
-            	<a href="_icerikler">
+            	<a href="_yazilar">
                 	<i class="fa fa-fw fa-chevron-left"></i> Geri
                 </a>
             </p>
@@ -37,7 +37,7 @@
                 <textarea class="form-control" id="igiris" name="giris"></textarea>
             </div>
             <div class="form-group col-md-12">
-            	Metin <br>
+            	Metin 
                 <textarea class="form-control" id="imetin" name="metin"></textarea>
             </div>
             <div class="form-group col-md-12">

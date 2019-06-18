@@ -30,7 +30,7 @@
 					<span class="input-group-addon">
 						<i class="fa fa-user fa-2x fa-fw"></i>
 					</span>
-					<input name="adi" type="text" placeholder="Ad Soyad" required class="form-control input-lg" maxlength="60" value="<?=$query['adi']?>"/><?=$query['adi']?></input>
+					<input name="adi" type="text" placeholder="Ad Soyad" required class="form-control input-lg" maxlength="60" value="<?=$query['adi']?>"/></input>
 				</div>
 			</div>
 			<div class="form-group col-lg-6">
@@ -61,18 +61,15 @@
 				<div id="hata" class="alert alert-danger alert-dismissable" style="display:none;">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 					<p>Şifreler Uyuşmuyor!</p>
+                   
 				</div>
+                 <button  type="submit" class="btn btn-info">Güncelle</button>
 			</div>
 
 		</div>
 		
-		<div class="col-md-6">
-			<h3>Üyelik Hakkında</h3>
-			<p>Formu doldurduktan sonra "Kayıt Ol" butonuna basarak kayıt işlemini tamamlayınız.</p>
-			<p>Kayıt işleminiz başarıyla gerçekleşirse, girdiğiniz eposta adresine mail onaylama linki gönderilecektir. Epostanıza gelen bağlantıya tıklayarak epostanızı onaylayınız.</p>
-			<p>Herhangi bir sorun yaşadıysanız site yöneticisine <a href="iletisim">iletişim</a> bölümünden ulaşabilirsiniz.</p>
-			<p>Sitemizi tercih ettiniz için teşekkür ederiz...</p>
-			<button  type="submit" class="btn btn-info">Güncelle</button>
-		</div>
+		
+			
+			
 	
 </section>

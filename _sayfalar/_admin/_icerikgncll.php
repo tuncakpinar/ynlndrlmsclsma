@@ -12,14 +12,14 @@
     	<h4 class="well">
         	YAZI GÜNCELLE
             <p class="pull-right">
-            	<a href="_icerikler">
+            	<a href="_yazilar">
                 	<i class="fa fa-fw fa-chevron-left"></i> Geri
                 </a>
             </p>
         </h4>
         
         <form id="frm" method="post">
-        	<input type="hidden" name="frm" value="yeniIcerik" />
+        	<input type="hidden" name="frm" value="icerikGuncelle" />
         	<input type="hidden" name="uid" value="<?=$_SESSION['id']?>" />
              <input type="hidden" name="id" value="<?=$query['id']?>" />
             <div class="checkbox form-group col-md-12">
@@ -52,7 +52,7 @@
                     	<span class="input-group-btn">
                         	<button type="button" class="btn btn-default btn-tarih"><i class="fa fa-fw fa-calendar"></i></button>
                         </span>
-                  		<input name="tarih" type="text" required class="form-control tarih" placeholder="<?=$query['tarih']?>" />
+                  		<input name="tarih" type="text" required class="form-control tarih" value="<?=$query['tarih']?>" />
                   </div>
             </div>
             <div class="form-group col-md-12">

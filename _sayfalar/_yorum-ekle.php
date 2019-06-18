@@ -6,11 +6,7 @@
         
     	<h4 class="well">
         	Yeni Yorum
-            <p class="pull-right">
-            	<a href="_referans">
-                	<i class="fa fa-fw fa-chevron-left"></i> Geri
-                </a>
-            </p>
+            
         </h4>
         
         <form id="frm" method="post">
@@ -36,7 +32,7 @@
             </div>
             <div class="form-group col-md-12">
             	Başlık <br>
-                <input name="baslik" type="text" required class="form-control" placeholder="İçerik başlığı..." />
+                <input name="baslik" type="text" required class="form-control" placeholder="Yorum başlığı..." />
             </div>
             <div class="form-group col-md-12">
             	Metin <br>

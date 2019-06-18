@@ -13,6 +13,6 @@
 <link rel="stylesheet" type="text/css" href="_css/lightbox.min.css">
 <link rel="stylesheet" type="text/css" href="_css/jquery.datetimepicker.css">
 
-<link rel="icon" href="_css/_rsm/favicon.gif" type="image/gif" sizes="16x16">
+<link rel="icon" href="_css/_rsm/favicon.png" type="image/png" sizes="16x16">
 
 <title><?=$ayarlar['adi'];?></title>

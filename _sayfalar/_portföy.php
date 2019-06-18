@@ -1,7 +1,7 @@
 ﻿<article>
 	<div style="overflow:auto; margin-bottom:20px;">
     	<?php
-			$portfoy = $ifo->sec('*', 'portfoylerim AS p', 'p.onay = 1 and p.tip = 1')->oku(false);
+			$portfoy = $ifo->sec('*', 'portfoylerim AS p', 'p.onay = 1 ')->oku(false);
 			foreach($portfoy AS $portfoy):
 		?>
                 <div class="col-md-4">

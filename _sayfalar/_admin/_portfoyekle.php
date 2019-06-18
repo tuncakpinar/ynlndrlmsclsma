@@ -1,27 +1,24 @@
-<?php 
+﻿<?php 
 	defined( '_ERISIM' ) or die( 'Erisim engellendi!' );
 	ifo::yetki('1');
 ?>
 	<section id="icerik" class="buyuk">
         
     	<h4 class="well">
-        	YENİ REFERANS
+        	YENİ PORTFÖY
             <p class="pull-right">
-            	<a href="_referanslar">
+            	<a href="_aportföylerim">
                 	<i class="fa fa-fw fa-chevron-left"></i> Geri
                 </a>
             </p>
         </h4>
         
         <form method="post" id="ajaxForm">
-				<input type="hidden" name="frm" value="referansEkle"/>
-				<div class="col-md-12">
-					<label><input type="radio" name="tip" value="1" checked/> BIREYSEL</label>
-                    <label><input type="radio" name="tip" value="2"/> KURUMSAL</label>
-				</div>
+				<input type="hidden" name="frm" value="portfoyEkle"/>
+				
 				<div class="form-group col-md-12">
 					<label class="control-label">Başlık:</label><br />
-					<input type="text" class="form-control" placeholder="Referans Başlığı" name="baslik" required/>
+					<input type="text" class="form-control" placeholder="Portföy Başlığı" name="baslik" required/>
 				</div>
                 <div class="form-group col-md-12">
             		Açıklama <br>
@@ -31,13 +28,13 @@
 					<div class="input-group">
 						<span class="input-group-btn">
 							<span class="btn btn-primary btn-file btn-md">
-								Seç&hellip; <input type="file" name="referans" required>
+								Seç&hellip; <input type="file" name="portfoy" required>
 							</span>
 						</span>
 						<input type="text" class="form-control input-md" required readonly>
 					</div>
 					<span class="help-block">
-						Yeni Referans Resminii Yüklemek İçin Seç'e Tıkla. <span class="text-danger">Maksimum Boyut 1980x800 px ve Maksimum boyut 1 mb olmalı.</span>
+						Yeni Portföy Resmini Yüklemek İçin Seç'e Tıkla. <span class="text-danger">Maksimum Boyut 1980x800 px ve Maksimum boyut 1 mb olmalı.</span>
 					</span>
 				</div>
 				<div class="col-lg-12 col-sm-12 col-xs-12">

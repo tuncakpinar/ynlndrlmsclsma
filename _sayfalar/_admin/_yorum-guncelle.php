@@ -13,7 +13,7 @@
     	<h4 class="well">
         	Yorum Güncelle
             <p class="pull-right">
-            	<a href="_asizdengelenler">
+            	<a href="asizdengelenler">
                 	<i class="fa fa-fw fa-chevron-left"></i> Geri
                 </a>
             </p>
@@ -42,10 +42,7 @@
                 <input name="baslik" type="text" required class="form-control" placeholder="Yorum başlığı..." value="<?=$query['baslik']?>" />
             </div>
             
-            <div class="form-group col-md-12">
-            	Giriş <br>
-                <textarea class="form-control" id="igiris" name="giris"><?=$query['giris']?></textarea>
-            </div>
+           
             <div class="form-group col-md-12">
             	Metin <br>
                 <textarea class="form-control" id="imetin" name="metin"><?=$query['metin']?></textarea>

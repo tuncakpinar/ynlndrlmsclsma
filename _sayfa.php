@@ -38,6 +38,9 @@
 		case '_yorumlar':$url='_sayfalar/_yorumlar.php';break;
 		case '_uyeduzenle':$url='_sayfalar/_admin/_uyedznl.php';break;
 		case '_icerikgncll':$url='_sayfalar/_admin/_icerikgncll.php';break;
+		case '_aportföylerim':$url='_sayfalar/_admin/_aportföyleerim.php';break;
+		case '_portfoygncll':$url='_sayfalar/_admin/_portfoygncll.php';break;
+		case '_portfoyekle':$url='_sayfalar/_admin/_portfoyekle.php';break;
 
 		case 'deneme':$url='_sayfalar/deneme.php';break;
 		case '_yorumlar':$url='_sayfalar/_portföy.php';break;

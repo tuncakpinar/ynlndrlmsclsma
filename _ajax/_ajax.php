@@ -135,6 +135,19 @@
 		
 		exit();
 	break;
+	case 'icerikGuncelle':
+		if(ifo::yetki('1','i')){
+		$_POST['link']=ifo::seflink($_POST['baslik']);		
+		
+		if($ifo->form_guncelle('yazilar',$_POST['id'])){
+			echo '~info~<h4><i class="fa fa-fw fa-thumbs-o-up"></i> Yorum Güncellendi!</h4>~_yazilar';
+		}
+		else{
+			echo '~warning~<h4><i class="fa fa-fw fa-meh-o"></i> Değişiklik yapmadınız!</h4>';}
+		}
+		
+		exit();
+	break;
 	
 	case 'yorumEkle':
 			$_POST['link']=ifo::seflink($_POST['baslik']);
@@ -147,6 +160,18 @@
 				echo '~warning~<h4><i class="fa fa-fw fa-meh-o"></i> İçerik Ekleme Başarısız!</h4>';
 			}
 	break;
+	case 'yeniIcerik':
+			$_POST['link']=ifo::seflink($_POST['baslik']);
+			if($ifo->form_ekle('yazilar'))
+			{ 
+				echo '~info~<h4><i class="fa fa-fw fa-thumbs-o-up"></i> İçerik Eklendi!</h4>~_yazilar';
+			}
+			else
+			{
+				echo '~warning~<h4><i class="fa fa-fw fa-meh-o"></i> İçerik Ekleme Başarısız!</h4>';
+			}
+			exit();
+	break;
 	
 	case 'referansOnayla':
 	if(ifo::yetki('1;2','i')){
@@ -154,6 +179,15 @@
 		$icerik=$ifo->sec('id,onay','referanslar',"id=$id")->oku();
 		$onay=$icerik['onay']?0:1;
 		$ifo->sql="UPDATE referanslar SET onay=$onay WHERE id=$id";
+		echo $ifo->calistir()?'reload~warning~<h4><i class="fa fa-fw fa-check-circle-o"></i> İşlem yapıldı!</h4>':'~danger~<h4><i class="fa fa-fw fa-close"></i> İşlem yapılamadı!</h4>';
+	}
+	break;
+	case 'portföyOnayla':
+	if(ifo::yetki('1;2','i')){
+		$id=ifo::kontrol($_POST['id'],'int');
+		$icerik=$ifo->sec('id,onay','portfoylerim',"id=$id")->oku();
+		$onay=$icerik['onay']?0:1;
+		$ifo->sql="UPDATE portfoylerim SET onay=$onay WHERE id=$id";
 		echo $ifo->calistir()?'reload~warning~<h4><i class="fa fa-fw fa-check-circle-o"></i> İşlem yapıldı!</h4>':'~danger~<h4><i class="fa fa-fw fa-close"></i> İşlem yapılamadı!</h4>';
 	}
 	break;
@@ -201,10 +235,22 @@
 		echo $ifo->sil('referanslar',$id)?'reload~warning~<h4><i class="fa fa-fw fa-check-circle-o"></i> İşlem yapıldı!</h4>':'~danger~<h4><i class="fa fa-fw fa-close"></i> İşlem yapılamadı!</h4>';
 		}
 	break;
+	case 'portfoySil':
+		if(ifo::yetki('1','i')){
+		$id=ifo::kontrol($_POST['id'],'int');
+		echo $ifo->sil('portfoylerim',$id)?'reload~warning~<h4><i class="fa fa-fw fa-check-circle-o"></i> İşlem yapıldı!</h4>':'~danger~<h4><i class="fa fa-fw fa-close"></i> İşlem yapılamadı!</h4>';
+		}
+	break;
 	case 'yorumSil':
 		if(ifo::yetki('1;2','i')){
 		$id=ifo::kontrol($_POST['id'],'int');
 		echo $ifo->sil('yorumlar',$id)?'reload~warning~<h4><i class="fa fa-fw fa-check-circle-o"></i> İşlem yapıldı!</h4>':'~danger~<h4><i class="fa fa-fw fa-close"></i> İşlem yapılamadı!</h4>';
+		}
+	break;
+		case 'icerikSil':
+		if(ifo::yetki('1;2','i')){
+		$id=ifo::kontrol($_POST['id'],'int');
+		echo $ifo->sil('yazilar',$id)?'reload~warning~<h4><i class="fa fa-fw fa-check-circle-o"></i> İşlem yapıldı!</h4>':'~danger~<h4><i class="fa fa-fw fa-close"></i> İşlem yapılamadı!</h4>';
 		}
 	break;
 	case 'uyeSil':
@@ -222,8 +268,8 @@
 	
 	case 'referansGuncelle':
 		if(ifo::yetki('1','i')){
-					if(isset($_FILES['slider'])){
-						$r=$ifo->dosyayukle($_FILES['slider'],'../_rsm/_referans/','1980x800');
+					if(isset($_FILES['referans'])){
+						$r=$haci->dosyayukle($_FILES['referans'],'../_rsm/_referans/','1980x800');
 						if($r=='ER'){echo '~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Yüklenirken Bir Hata Oluştu.</h4>Lütfen daha sonra tekrar deneyin.'; exit;}
 						else if($r=='LEN'){echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Boyutu İstenilenden Büyük.</h4>Lütfen Daha Küçük Boyutlu Bir Resim Yükleyin.'; exit;}
 						else if($r=='NA'){echo '~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Desteklenmeyen Dosya Türü</h4>Sadece Resim Yükleyebilirsin!'; exit;}
@@ -233,7 +279,7 @@
 							$r=explode('/', $r);
 							$_POST['resim']=$r[3];
 							//Eski Resimi Sil
-								$eski=$ifo->sec('resim,id','slider','id='.$_POST['id'])->oku();
+								$eski=$ifo->sec('resim,id','referanslar','id='.$_POST['id'])->oku();
 								unlink('../_rsm/_referans/'.$eski['resim']);
 							//
 							echo $ifo->form_guncelle('referanslar',$_POST['id'])?'~success~<h4><i class="fa fa-fw fa-thumbs-up"></i> Başarıyla Referans\'ı Güncelledin.</h4>~_referanslar':'~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Bir Hata Oluştu.</h4>Lütfen daha sonra tekrar deneyin.';
@@ -241,6 +287,30 @@
 					}
 					else{
 						echo $ifo->form_guncelle('referanslar',$_POST['id'])?'~success~<h4><i class="fa fa-fw fa-thumbs-up"></i> Başarıyla Referans\'ı Güncelledin.</h4>~_referanslar':'~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Değişiklik Yapmadınız.</h4>Değişiklik Yapmadan Güncelleme Yapamazsınız.';
+					}
+				}
+	break;
+case 'portfoyGuncelle':
+		if(ifo::yetki('1','i')){
+					if(isset($_FILES['portfoy'])){
+						$r=$haci->dosyayukle($_FILES['portfoy'],'../_rsm/portfoy/','1980x800');
+						if($r=='ER'){echo '~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Yüklenirken Bir Hata Oluştu.</h4>Lütfen daha sonra tekrar deneyin.'; exit;}
+						else if($r=='LEN'){echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Boyutu İstenilenden Büyük.</h4>Lütfen Daha Küçük Boyutlu Bir Resim Yükleyin.'; exit;}
+						else if($r=='NA'){echo '~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Desteklenmeyen Dosya Türü</h4>Sadece Resim Yükleyebilirsin!'; exit;}
+						else if($r=='MOVE'){echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Yüklenirken Bir Hata Oluştu.</h4>Lütfen daha sonra tekrar deneyin.'; exit;}
+						else if($r=='WID'){echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Çözünürlüğü İstenilenden Büyük</h4>Lütfen daha küçük çözünürlüklü bir resim yüklemeyi deneyin.'; exit;}
+						else{
+							$r=explode('/', $r);
+							$_POST['resim']=$r[3];
+							//Eski Resimi Sil
+								$eski=$ifo->sec('resim,id','portfoy','id='.$_POST['id'])->oku();
+								unlink('../_rsm/portfoy/'.$eski['resim']);
+							//
+							echo $ifo->form_guncelle('portfoylerim',$_POST['id'])?'~success~<h4><i class="fa fa-fw fa-thumbs-up"></i> Başarıyla Referans\'ı Güncelledin.</h4>~_aportföyleerim':'~danger~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Bir Hata Oluştu.</h4>Lütfen daha sonra tekrar deneyin.';
+						}
+					}
+					else{
+						echo $ifo->form_guncelle('portfoylerim',$_POST['id'])?'~success~<h4><i class="fa fa-fw fa-thumbs-up"></i> Başarıyla Referans\'ı Güncelledin.</h4>~_aportföylerim':'~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Değişiklik Yapmadınız.</h4>Değişiklik Yapmadan Güncelleme Yapamazsınız.';
 					}
 				}
 	break;
@@ -292,7 +362,27 @@
 				else echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Seçmedin.</h4>Lütfen bir resim seç.';
 			}
 	break;
-	
+	case 'portfoyEkle':
+		if(ifo::yetki('1','i')){
+				if(isset($_FILES['portfoy'])){
+					$_POST['tarih']=$ifo->suan;
+					$_POST['ekleyen']=$_SESSION['id'];
+					$r=$haci->dosyayukle($_FILES['portfoy'],'../_rsm/portfoy/','1980x800');
+					if($r=='ER'){echo '~danger~Resim yüklenirken bir hata oluştu.'; exit;}
+					else if($r=='LEN'){echo '~warning~Resim Boyutu İstenilenden Büyük.'; exit;}
+					else if($r=='NA'){echo '~warning~Sadece Resim Yükleyebilirsin.'; exit;}
+					else if($r=='MOVE'){echo '~warning~Resim Taşınırken Bir Hata Oluştu'; exit;}
+					else if($r=='WID'){echo '~warning~Resim Çözünürlüğü İstenilenden Yüksek.'; exit;}
+					else{
+						$r=explode('/', $r);
+						$_POST['onay']=isset($_POST['onay'])?'1':'0';
+						$_POST['resim']=$r[3];
+						echo $ifo->form_ekle('portfoylerim')?'~success~<h4><i class="fa fa-fw fa-thumbs-up"></i> Başarıyla Yeni Portföyü Ekledin.</h4>~_aportföylerim':'~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Bir Hata Oluştu.</h4>Lütfen daha sonra tekrar deneyin.';
+					}
+				}
+				else echo '~warning~<h4><i class="fa fa-fw fa-exclamation-triangle"></i> Resim Seçmedin.</h4>Lütfen bir resim seç.';
+			}
+	break;
 	
 	
 	case 'sliderEkle':

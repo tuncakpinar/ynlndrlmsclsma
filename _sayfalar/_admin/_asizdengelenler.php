@@ -8,19 +8,22 @@
     	<thead>
         	<tr>
             	<th class="gizli text-center">ID</th>
-            	<th><i class="fa fa-fw fa-puzzle-piece"></i> BAŞLIK</th>
-            	<th class="gizli"><i class="fa fa-fw fa-user"></i> YAZAR</th>
-            	<th class="gizli"><i class="fa fa-fw fa-clock-o"></i> TARİH</th>
+                <th><i class="fa fa-fw fa-puzzle-piece"></i> BAŞLIK</th>
+                <th>METİN</th>
+                <th class="gizli"><i class="fa fa-fw fa-clock-o"></i> TARİH</th>
+            	<th class="gizli"><i class="fa fa-fw fa-user"></i> FİRMA</th>
+                <th class="gizli"><i class="fa fa-fw fa-user"></i> ADSOYAD</th>
+            	<th class="gizli"><i class="fa fa-fw fa-user"></i> ÜNVAN</th>
             </tr>
         </thead>
         <tbody>
         	<?php
-            	$ifo->sec('i.ana,i.onay,i.id,i.baslik,i.tarih,i.adsoyad as yazar','yorumlar AS i','1=1','id DESC');
+            	$ifo->sec('i.ana,i.onay,i.id,i.baslik,i.metin,i.firma,i.unvan,i.tarih,i.adsoyad ','yorumlar AS i','1=1','id DESC');
 				while($yorumlar=$ifo->oku()){
 			?>
         	<tr>
             	<td class="gizli text-center"><?=$yorumlar['id'];?></td>
-            	<td><a class="btn" href="_yorum-guncelle?id=<?=$yorumlar['id'];?>" data-toggle="popover" data-placement="bottom" data-title="Giriş" data-content="<?=substr(strip_tags($yorumlar['giris']),0,250);?> ..." data-trigger="hover" ><i class="fa fa-fw fa-puzzle-piece"></i> <b><?=$yorumlar['baslik'];?></b></a>
+            	<td><i class="fa fa-fw fa-puzzle-piece"></i> <b><?=$yorumlar['baslik'];?></b></a>
                 <p class="pull-right">
                 	
                     <a class="text-info" title="Güncelle" href="_yorum-guncelle?id=<?=$yorumlar['id'];?>"><i class="fa fa-fw fa-pencil"></i></a>
@@ -31,9 +34,12 @@
                 </p>
                 
                 </td>
-            	<td class="gizli"><?=$yorumlar['yazar'];?></td>
+                <td class="gizli"><?=$yorumlar['metin'];?></td>
             	<td class="gizli"><?=ifo::tarih($yorumlar['tarih'],'%d/%m/%Y');?></td>
-            </tr>
+             	<td class="gizli"><?=$yorumlar['firma'];?></td>
+                <td class="gizli"><?=$yorumlar['adsoyad'];?></td>
+                <td class="gizli"><?=$yorumlar['unvan'];?></td>
+                </tr>
             <?php } ?>
         </tbody>
     </table>

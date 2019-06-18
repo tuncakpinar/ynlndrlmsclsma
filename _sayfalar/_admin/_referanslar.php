@@ -20,7 +20,7 @@
 			?>
         	<tr>
             	<td >
-                <a class="btn" href="_slider?id=<?=$referans['id'];?>" data-toggle="popover" data-placement="bottom" data-title="Açıklama" data-content="<?=substr(strip_tags($referans['aciklama']),0,250);?> ..." data-trigger="hover" ><i class="fa fa-fw fa-puzzle-piece"></i> <b><?=$referans['baslik'];?></b></a>
+                <a class="btn" href="_referans-guncelle?id=<?=$referans['id'];?>" data-toggle="popover" data-placement="bottom" data-title="Açıklama" data-content="<?=substr(strip_tags($referans['aciklama']),0,250);?> ..." data-trigger="hover" ><i class="fa fa-fw fa-puzzle-piece"></i> <b><?=$referans['baslik'];?></b></a>
                 <p class="pull-right">
                 	
                     <a class="text-info" title="Güncelle" href="_referans-guncelle?id=<?=$referans['id'];?>"><i class="fa fa-fw fa-pencil"></i></a>
